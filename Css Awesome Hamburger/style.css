@@ -1,0 +1,224 @@
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: inherit;
+}
+
+html {
+	font-size: 62.5%;
+	/* 1rem = 10px */
+
+	/* scroll-behavior: smooth; */
+	/* Scroll-behavior doesn't work for scroll snap */
+}
+
+body {
+	box-sizing: border-box;
+	font-weight: 400;
+	font-family: "Montserrat", sans-serif;
+	overflow-y: hidden;
+}
+
+/* For Scroll Snap */
+
+.main {
+	scroll-snap-type: y mandatory;
+	overflow-y: scroll;
+	height: 100vh;
+}
+
+section {
+	scroll-snap-align: start;
+}
+
+.header {
+	background-color: rgba(255, 255, 255, 0.5);
+	width: 100%;
+	position: sticky;
+	top: 0;
+}
+
+.nav {
+	width: 100%;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	min-height: 6.5rem;
+	padding: 0 3rem;
+}
+
+.nav__logo {
+	z-index: 10;
+}
+
+.nav__logo h3 {
+	font-weight: 500;
+	font-size: 2.8rem;
+}
+.nav__link {
+	display: inline-block;
+	text-decoration: none;
+	color: #000;
+	font-size: 2rem;
+	padding-bottom: 0.7rem;
+}
+
+.bubble {
+	position: absolute;
+	z-index: 2;
+	transition: 0.3s linear;
+}
+
+.nav__link:not(:last-child) {
+	margin-right: 2.5rem;
+}
+
+/* As bubbles is the last child so we can't remove the last link margin. As a result we need to select the last link element */
+.nav__link:nth-child(4) {
+	margin-right: 0;
+}
+
+section {
+	min-height: 100vh;
+	display: grid;
+	place-items: center;
+	font-size: 3.5rem;
+	color: #fff;
+}
+
+#home {
+	background-image: linear-gradient(
+		to right bottom,
+		rgba(139, 103, 236, 0.9),
+		rgba(207, 15, 245, 0.8)
+	);
+}
+
+#about {
+	background-image: linear-gradient(
+		to right bottom,
+		rgba(238, 111, 27, 0.9),
+		rgba(243, 135, 11, 0.8)
+	);
+}
+#pricing {
+	background-image: linear-gradient(
+		to right bottom,
+		rgba(16, 212, 75, 0.9),
+		rgba(16, 238, 116, 0.8)
+	);
+}
+#contact {
+	background-image: linear-gradient(
+		to right bottom,
+		rgba(247, 56, 167, 0.9),
+		rgba(231, 15, 87, 0.8)
+	);
+}
+
+.hamburger {
+	width: 4.5rem;
+	height: 3.3rem;
+	display: grid;
+	place-items: center;
+	cursor: pointer;
+	z-index: 10;
+}
+
+.hamburger span {
+	display: inline-block;
+
+	background-color: #333;
+	width: 3.5rem;
+	height: 3.3px;
+	transition: 0.4s ease-in;
+	transform-origin: 2px 2px;
+}
+
+.hamburger.active span:nth-child(1) {
+	transform: rotate(45deg);
+}
+.hamburger.active span:nth-child(2) {
+	opacity: 0;
+}
+.hamburger.active span:nth-child(3) {
+	transform: rotate(-45deg);
+}
+
+/* When this active class is being added by javascript then the adjacent sibling style */
+.hamburger.active + .nav__links-2 {
+	clip-path: circle(100% at 50% 50%);
+	-webkit-clip-path: circle(100% at 50% 50%);
+}
+
+.nav__links-2 {
+	position: fixed;
+	background-color: rgb(156, 27, 216);
+	width: 100%;
+	height: 100%;
+
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+
+	/* Hiding this clip path by setting clip path size to 0% */
+	clip-path: circle(0% at 50% 50%);
+	-webkit-clip-path: circle(0% at 50% 50%);
+
+	transition: clip-path 0.6s ease-in-out;
+}
+
+/* Adding this three class by Javascript */
+
+.clip-path {
+	clip-path: circle(0% at 50% 50%);
+	-webkit-clip-path: circle(0% at 50% 50%);
+}
+
+.toggle-color {
+	color: #fff;
+	transition: 0.7s ease-in-out;
+}
+.toggle-background {
+	background-color: #fff !important;
+	transition: 0.7s ease-in-out;
+}
+
+.nav__links-2 .nav__link {
+	margin-right: 0;
+	font-size: 1.8rem;
+	color: #fff;
+}
+.nav__links-2 .nav__link:not(:last-child) {
+	margin-bottom: 2.5rem;
+}
+
+@media only screen and (min-width: 768px) {
+	.hide-for-desktop {
+		display: none;
+	}
+}
+
+@media only screen and (max-width: 767px) {
+	.hide-for-mobile {
+		display: none;
+	}
+}
+
+@media only screen and (min-width: 1024px) {
+	.nav {
+		max-width: 1110px;
+		margin: 0 auto;
+	}
+	.nav__link:not(:last-child) {
+		margin-right: 3.3rem;
+	}
+	.nav__link:nth-child(4) {
+		margin-right: 0;
+	}
+}

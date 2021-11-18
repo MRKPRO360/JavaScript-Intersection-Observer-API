@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="style.css" />
+		<script defer src="style.js"></script>
+		<title>Css Snap & JS Intersection Observer</title>
+	</head>
+	<body>
+		<header class="header">
+			<nav class="nav">
+				<div class="nav__logo"><h3>MRK</h3></div>
+				<div class="nav__links-container nav__links hide-for-mobile">
+					<a data-page="home" href="#home" class="nav__link">Home</a>
+					<a data-page="about" href="#about" class="nav__link">About</a>
+					<a data-page="pricing" href="#pricing" class="nav__link">Pricing</a>
+					<a data-page="contact" href="#contact" class="nav__link">Contact</a>
+					<div class="bubble"></div>
+				</div>
+
+				<div class="hamburger hide-for-desktop">
+					<span></span>
+					<span></span>
+					<span></span>
+				</div>
+
+				<div class="nav__links-container nav__links-2 hide-for-desktop">
+					<a href="#home" class="nav__link">Home</a
+					><a href="#about" class="nav__link">About</a>
+					<a href="#pricing" class="nav__link">Pricing</a>
+					<a href="#contact" class="nav__link">Contact</a>
+				</div>
+			</nav>
+		</header>
+		<main class="main">
+			<section data-grad="0" id="home">Home</section>
+			<section data-grad="1" id="about">About</section>
+			<section data-grad="2" id="pricing">Pricing</section>
+			<section data-grad="3" id="contact">Contact</section>
+		</main>
+	</body>
+</html>
